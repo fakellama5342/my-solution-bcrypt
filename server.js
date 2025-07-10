@@ -5,7 +5,9 @@ const myDB = require('./connection');
 const fccTesting = require('./freeCodeCamp/fcctesting.js');
 
 const app = express();
-
+app.get('/_api/package.json', function(req, res) {
+  res.sendFile(__dirname + '/package.json');
+});
 fccTesting(app); //For FCC testing purposes
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use(express.json());
